@@ -13,8 +13,8 @@ import {
   StreamableFile,
   UseGuards,
 } from "@nestjs/common";
-import { StorageService } from "src/storage/storage.service";
 import { Readable } from "stream";
+import { StorageService } from "../storage/storage.service";
 import { ArtifactsGuard } from "./artifacts.guard";
 import { GetArtifactRO, PutArtifactRO, StatusRO } from "./artifacts.interface";
 import { ArtifactQueryTeamPipe } from "./artifacts.pipe";

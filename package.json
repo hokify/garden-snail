@@ -3,10 +3,26 @@
   "version": "1.3.0",
   "description": "Turborepo remote cache server",
   "author": "Peter Karolyi <peter@karolyi.dev>",
-  "private": true,
   "license": "MIT",
+  "homepage": "https://github.com/hokify/garden-snail/tree/hokify",
+  "bugs": {
+    "url": "https://github.com/hokify/garden-snail/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hokify/garden-snail"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": null
+  },
+  "files": [
+    "dist/**",
+    "!dist/*.tsbuildinfo"
+  ],
   "scripts": {
     "build": "nest build",
+    "build:tsc": "del-cli dist && tsc -project ./tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -43,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "8.6.0",
     "@typescript-eslint/parser": "8.6.0",
     "@vitest/coverage-v8": "2.1.1",
+    "del-cli": "^6.0.0",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
@@ -58,6 +75,6 @@
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
-    "node": "20.18.0"
+    "node": ">=18"
   }
 }

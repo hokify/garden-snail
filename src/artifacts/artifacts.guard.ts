@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { FastifyRequest } from "fastify";
-import { ConfigurationSchema } from "src/config/configuration";
+import { ConfigurationSchema } from "../config/configuration";
 
 @Injectable()
 export class ArtifactsGuard implements CanActivate {

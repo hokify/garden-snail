@@ -1,11 +1,11 @@
 import { S3Client } from "@aws-sdk/client-s3";
 import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
+import { Readable } from "stream";
 import {
   ConfigurationSchema,
   isS3KeyAuthCredentials,
-} from "src/config/configuration";
-import { Readable } from "stream";
+} from "../config/configuration";
 import { LocalStorageDriver } from "./providers/local.driver";
 import { S3StorageDriver } from "./providers/s3.driver";
 import { StorageDriver } from "./storage.interface";

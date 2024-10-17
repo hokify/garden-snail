@@ -1,9 +1,9 @@
 import { StreamableFile } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
-import { StorageService } from "src/storage/storage.service";
 import { Readable } from "stream";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { StorageService } from "../storage/storage.service";
 import { ArtifactsController } from "./artifacts.controller";
 
 const testConfig = {
