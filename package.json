@@ -1,6 +1,6 @@
 {
   "name": "@hokify/garden-snail",
-  "version": "1.3.0",
+  "version": "1.3.0-hokify.3",
   "description": "Turborepo remote cache server",
   "author": "Peter Karolyi <peter@karolyi.dev>",
   "license": "MIT",
