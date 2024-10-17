@@ -19,12 +19,14 @@ export class S3StorageDriver implements StorageDriver {
 
   async write(team: string, hash: string, contents: Readable): Promise<void> {
     const params = {
-      Body: contents,
       Bucket: this.bucket,
       Key: `${team}/${hash}`,
     };
     this.logger.debug(`write params: ${JSON.stringify(params)}`);
-    const upload = new Upload({ client: this.s3Client, params });
+    const upload = new Upload({
+      client: this.s3Client,
+      params: { ...params, Body: contents },
+    });
     await upload.done();
   }
 

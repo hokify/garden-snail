@@ -1,5 +1,4 @@
 import {
-  Body,
   Controller,
   Get,
   Head,
@@ -10,10 +9,11 @@ import {
   Post,
   Put,
   Query,
+  Req,
   StreamableFile,
   UseGuards,
 } from "@nestjs/common";
-import { Readable } from "stream";
+import { Request } from "express";
 import { StorageService } from "../storage/storage.service";
 import { ArtifactsGuard } from "./artifacts.guard";
 import { GetArtifactRO, PutArtifactRO, StatusRO } from "./artifacts.interface";
@@ -59,10 +59,10 @@ export class ArtifactsController {
   async putArtifact(
     @Param("hash") hash: string,
     @Query(new ArtifactQueryTeamPipe()) team: string,
-    @Body() body: Buffer,
+    @Req() request: Request,
   ): Promise<PutArtifactRO> {
-    this.logger.log(`PUT /${hash} team: ${team} body.length: ${body.length}`);
-    await this.storageService.write(team, hash, Readable.from(body));
+    this.logger.log(`PUT /${hash} team: ${team}`);
+    await this.storageService.write(team, hash, request);
     return { urls: [`${team}/${hash}`] };
   }
 

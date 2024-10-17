@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { FastifyRequest } from "fastify";
+import { Request } from "express";
 import { ConfigurationSchema } from "../config/configuration";
 
 @Injectable()
@@ -10,8 +10,8 @@ export class ArtifactsGuard implements CanActivate {
   ) {}
 
   canActivate(context: ExecutionContext) {
-    const request = context.switchToHttp().getRequest<FastifyRequest>();
-    const authHeader = request.headers.authorization;
+    const request = context.switchToHttp().getRequest<Request>();
+    const authHeader = request.get("authorization");
 
     if (!authHeader) return false;
 
